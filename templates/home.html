@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+body {
+  background-image: url('https://autovista24.autovistagroup.com/wp-content/uploads/sites/5/2021/06/Rental20Cars_5.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+label {
+  font-weight: bold;
+
+}
+
+</style>
+
+<style>
+body {
+  background-color: rgb(157, 184, 194);
+}
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+
+</style>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1><FONT COLOR=white>Indian Market Car Price Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <select name="Location" id="Location" required="required">
+            <option value="1">Ahmedabad</option>
+            <option value="1">Bangalore</option>
+            <option value="1">Chennai</option>
+            <option value="1">Coimbatore</option>
+            <option value="1">Delhi</option>
+            <option value="1">Hyderabad</option>
+            <option value="1">Jaipur</option>
+            <option value="1">Kochi</option>
+            <option value="1">Mumbai</option>
+            <option value="1">Pune</option>
+        </select><br><br>
+
+
+    	<input type="text" name="Kilometers_Driven" placeholder="Kilometers_Driven" required="required" /><br><br>
+
+        <select name="Fuel Type" id="Fuel Type" required="required">
+            <option value="1">CNG</option>
+            <option value="1">Diesel</option>
+            <option value="1">Electric</option>
+            <option value="1">LPG</option>
+            <option value="1">Petrol</option>
+        </select><br><br>
+
+        <select name="Fuel_Type" id="Fuel_Type" required="required">
+            <option value="1">Automatic</option>
+            <option value="0">Manual</option>
+        </select><br><br>
+
+        <select name="Owner_Type" id="Owner_Type" required="required">
+            <option value="1">First</option>
+            <option value="1">Second</option>
+            <option value="1">Third</option>
+            <option value="1">Fourth&Above</option>
+        </select><br><br>
+
+        <input type="text" name="Mileage" placeholder="Mileage" required="required" /><br><br>
+
+        <input type="text" name="Engine" placeholder="Engine" required="required" /><br><br>
+
+        <input type="text" name="Power" placeholder="Power" required="required" /><br><br>
+
+        <select name="Colour" id="Colour" required="required">
+            <option value="1">Black/Silver</option>
+            <option value="1">Others</option>
+            <option value="1">White</option>
+        </select><br><br>
+
+        <input type="text" name="Seats" placeholder="Seats" required="required" /><br><br>
+
+        <input type="text" name="No. of Doors" placeholder="No. of Doors" required="required" /><br><br>
+
+        <select name="Brand" id="Brand" required="required">
+            <option value="1"></option>
+            <option value="1">Audi  </option>
+            <option value="1">BMW</option>
+            <option value="1">Bentley</option>
+            <option value="1">Chevrolet</option>
+            <option value="1">Datsun</option>
+            <option value="1">Fiat</option>
+            <option value="1">Force</option>
+            <option value="1">Ford</option>
+            <option value="1">Honda</option>
+            <option value="1">Hyundai</option>
+            <option value="1">Isuzu</option>
+            <option value="1">Jaguar</option>
+            <option value="1">Jeep</option>
+            <option value="1">Lamborghini</option>
+            <option value="1">Land</option>
+            <option value="1">Mahindra</option>
+            <option value="1">Maruti</option>
+            <option value="1">Mercedes-Benz</option>
+            <option value="1">Mini</option>
+            <option value="1">Mitsubishi</option>
+            <option value="1">Nissan</option>
+            <option value="1">Porsche</option>
+            <option value="1">Renault</option>
+            <option value="1">Skoda</option>
+            <option value="1">Smart</option>
+            <option value="1">Tata</option>
+            <option value="1">Toyota</option>
+            <option value="1">Volkswagen</option>
+            <option value="1">Volvo</option>
+        </select><br><br>
+
+        <select name="Model" id="Model" required="required">
+            <option value="1"></option>
+            <option value="1">Scorpio</option>
+            <option value="1">Baleno</option>
+            <option value="1">Xylo</option>
+            <option value="1">Grand</option>
+            <option value="1">Innova</option>
+            <option value="1">WRV</option>
+            <option value="1">Verna</option>
+            <option value="1">Fortuner</option>
+            <option value="1">Beat</option>
+            <option value="1">A6</option>
+            <option value="1">i20</option>
+            <option value="1">Laura</option>
+            <option value="1">City</option>
+            <option value="1">Q7</option>
+            <option value="1">Duster</option>
+            <option value="1">Ertiga</option>
+            <option value="1">Rover Freelander</option>
+            <option value="1">Rapid</option>
+            <option value="1">Zen</option>
+            <option value="1">3</option>
+            <option value="1">Wagon</option>
+            <option value="1">Jazz</option>
+            <option value="1">Vitara</option>
+            <option value="1">D-MAX</option>
+            <option value="1">SX4</option>
+            <option value="1">i10</option>
+            <option value="1">Amaze</option>
+            <option value="1">Xcent</option>
+            <option value="1">F</option>
+            <option value="1">C-Class</option>
+            <option value="1">Polo</option>
+            <option value="1">5</option>
+            <option value="1">Thar</option>
+            <option value="1">Alto</option>
+            <option value="1">A3</option>
+            <option value="1">Xenon</option>
+            <option value="1">X1</option>
+            <option value="1">Getz</option>
+            <option value="1">Vento</option>
+            <option value="1">Sail</option>
+            <option value="1">Jetta</option>
+            <option value="1">Ciaz</option>
+            <option value="1">CR-V</option>
+            <option value="1">XUV500</option>
+            <option value="1">Civic</option>
+            <option value="1">Superb</option>
+            <option value="1">Ritz</option>
+            <option value="1">Pajero</option>
+            <option value="1">Corolla</option>
+            <option value="1">Elantra</option>
+            <option value="1">Figo</option>
+            <option value="1">EON</option>
+            <option value="1">A4</option>
+            <option value="1">Sunny</option>
+            <option value="1">Tiago</option>
+            <option value="1">Jeep</option>
+            <option value="1">Fusion</option>
+            <option value="1">XUV300</option>
+            <option value="1">Others</option>
+
+        </select><br><br>
+
+        <select name="Cars_Category" id="Cars_Category" required="required">
+            <option value="1">Budget_Friendly</option>
+            <option value="1">TopNotch_Cars</option>
+            <option value="1">Medium_Range</option>
+        </select><br><br>
+
+        <input type="text" name="CarAge" placeholder="CarAge" required="required" /><br>
+
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button><br>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+<center> {{prediction_text}} </center>
+
+</body>
+</html>
